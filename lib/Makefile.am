@@ -8,6 +8,7 @@ include lib/filter/Makefile.am
 include lib/template/Makefile.am
 include lib/stats/Makefile.am
 include lib/control/Makefile.am
+include lib/debugger/Makefile.am
 include lib/compat/Makefile.am
 
 LSNG_RELEASE		= $(shell echo @VERSION@ | cut -d. -f1,2)
@@ -236,6 +237,7 @@ lib_libsyslog_ng_la_SOURCES		= \
 	$(template_sources)		\
 	$(stats_sources)		\
 	$(control_sources)		\
+	$(debugger_sources)		\
 	$(compat_sources)
 
 if WITH_EMBEDDED_CRYPTO
