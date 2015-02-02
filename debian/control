@@ -15,7 +15,10 @@ Homepage: http://www.balabit.com/network-security/syslog-ng/opensource-logging-s
 Package: syslog-ng
 Architecture: any
 Depends: ${misc:Depends}, syslog-ng-core (= ${binary:Version})
-Description: Enhanced system logging daemon (metapackage)
+Recommends: logrotate
+Provides: system-log-daemon, linux-kernel-log-daemon
+Conflicts: system-log-daemon, linux-kernel-log-daemon
+Description: Enhanced system logging daemon (daemon)
  syslog-ng is an enhanced log daemon, supporting a wide range of input
  and output methods: syslog, unstructured text, message queues,
  databases (SQL and NoSQL alike) and more.
@@ -31,14 +34,12 @@ Description: Enhanced system logging daemon (metapackage)
   * hand on messages for further processing using message queues (like
     AMQP), files or databases (like PostgreSQL or MongoDB).
  .
- This package is a metapackage. It can be safely removed.
+ This package only contains what is needed to run syslog-ng as the
+ system log daemon.
 
 Package: syslog-ng-core
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, util-linux (>= 2.12-10)
-Recommends: logrotate
-Provides: system-log-daemon, linux-kernel-log-daemon
-Conflicts: system-log-daemon, linux-kernel-log-daemon
 Replaces: syslog-ng (<< 3.3.0~), libsyslog-ng-dev
 Breaks: syslog-ng (<< 3.3.0~), libsyslog-ng-dev
 Description: Enhanced system logging daemon
